@@ -1,0 +1,28 @@
+{
+  "name": "firebase-querybid",
+  "version": "1.0.0",
+  "description": "a simple REST to expand Appgyver's firebase connection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abioduog/firebase-queryBID.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abioduog/firebase-queryBID/issues"
+  },
+  "homepage": "https://github.com/abioduog/firebase-queryBID#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^8.10.1",
+    "firebase-admin": "^11.5.0",
+    "mongoose": "^6.9.0"
+  }
+}
