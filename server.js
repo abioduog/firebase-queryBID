@@ -24,7 +24,7 @@ app.use(cors());
 
 // Set up a simple route
 app.get('/', (req, res) => {
-  res.send('Hello Appgyver World!');
+  res.json('Hello Appgyver World!');
 });
 
 // // create user
