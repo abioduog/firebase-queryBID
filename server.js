@@ -63,13 +63,25 @@ app.get('/user-profile/:email', (req, res) => {
     .then((snapshot) => {
       const data = [];
       snapshot.forEach((doc) => {
-        data.push(doc.data());
+        // data.push(doc.data());
+        return res.json(doc.data());
       });
-      return res.json(data);
+      // return res.json(data);
     })
     .catch((err) => console.log(err));
 });
 
+// update user profile
+app.put('/update-user-profile/:email', (req, res) => {
+  fireDB.collection('userProfile').where('email', '==', req.params.email).get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        fireDB.collection('userProfile').doc(doc.id).update(req.body);
+      });
+      return res.json({ message: 'profile updated successfully' });
+    })
+    .catch((err) => console.log(err));
+});
 
 
 // create event 
@@ -80,6 +92,7 @@ app.post('/create-event', (req, res) => {
     title,
     type,
     creatorId,
+    creatorEmail,
   } = req.body;
   fireDB.collection('events').add({
     date,
@@ -87,6 +100,7 @@ app.post('/create-event', (req, res) => {
     title,
     type,
     creatorId,
+    creatorEmail,
   })
     .then((doc) => {
       res.json({ message: `document ${doc.id} created successfully` });
@@ -95,6 +109,15 @@ app.post('/create-event', (req, res) => {
       res.status(500).json({ error: 'something went wrong' });
       console.error(err);
     });
+});
+
+// update event
+app.put('/update-event/:id', (req, res) => {
+  fireDB.collection('events').doc(req.params.id).update(req.body)
+    .then(() => {
+      res.json({ message: 'event updated successfully' });
+    })
+    .catch((err) => console.log(err));
 });
 
 
