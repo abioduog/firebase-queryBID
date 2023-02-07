@@ -121,7 +121,7 @@ app.get('/get-event/:email', (req, res) => {
         data.push(doc.data());
       });
       // return data;
-      res.send(data);
+      return res.send(data);
     })
     .catch((err) => console.log(err));
 });
