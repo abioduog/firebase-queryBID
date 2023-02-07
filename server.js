@@ -111,6 +111,20 @@ app.post('/create-event', (req, res) => {
     });
 });
 
+
+// get events by creator email
+app.get('/get-event/:email', (req, res) => {
+  fireDB.collection('events').where('creatorEmail', '==', req.params.email).get()
+    .then((snapshot) => {
+      const data = [];
+      snapshot.forEach((doc) => {
+        data.push(doc.data());
+      });
+      return res.json(data);
+    })
+    .catch((err) => console.log(err));
+});
+
 // update event
 app.put('/update-event/:id', (req, res) => {
   fireDB.collection('events').doc(req.params.id).update(req.body)
