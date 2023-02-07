@@ -64,9 +64,9 @@ app.get('/user-profile/:email', (req, res) => {
       const data = [];
       snapshot.forEach((doc) => {
         data.push(doc.data());
-        return res.json(doc.data());
+        // return res.json(doc.data());
       });
-      // return res.json(data);
+      return res.json(data);
     })
     .catch((err) => console.log(err));
 });
