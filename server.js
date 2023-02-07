@@ -120,7 +120,8 @@ app.get('/get-event/:email', (req, res) => {
       snapshot.forEach((doc) => {
         data.push(doc.data());
       });
-      return data;
+      // return data;
+      res.send(data);
     })
     .catch((err) => console.log(err));
 });
