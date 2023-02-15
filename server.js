@@ -52,6 +52,7 @@ app.post('/create-user-profile', (req, res) => {
     website
   })
     .then((doc) => {
+      id = doc.id
       res.json({ message: `document ${doc.id} created successfully` });
     })
     .catch((err) => {
