@@ -27,22 +27,38 @@ app.get('/', (req, res) => {
   res.json('Hello Appgyver World!');
 });
 
-// // create user
-// app.post('/create-user', (req, res) => {
-//   const { name, email, password } = req.body;
-//   fireDB.collection('users').add({
-//     name,
-//     email,
-//     password,
-//   })
-//     .then((doc) => {
-//       res.json({ message: `document ${doc.id} created successfully` });
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ error: 'something went wrong' });
-//       console.error(err);
-//     });
-// });
+// create user profile
+app.post('/creat-user-profile', (req, res) => {
+  const {
+    email,
+    events,
+    firstname,
+    id,
+    lastname,
+    occupation,
+    shortdescription,
+    socialmedia,
+    website
+  } = req.body;
+  fireDB.collection('usersProfile').add({
+    email,
+    events,
+    firstname,
+    id,
+    lastname,
+    occupation,
+    shortdescription,
+    socialmedia,
+    website
+  })
+    .then((doc) => {
+      res.json({ message: `document ${doc.id} created successfully` });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: 'something went wrong' });
+      console.error(err);
+    });
+});
 
 // get all users profile
 app.get('/users-profile', (req, res) => {
