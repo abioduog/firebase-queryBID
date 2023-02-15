@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 // create user profile
-app.post('/creat-user-profile', (req, res) => {
+app.post('/create-user-profile', (req, res) => {
   const {
     email,
     events,
